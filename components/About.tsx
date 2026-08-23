@@ -12,44 +12,36 @@ export default function About() {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal delay={100}>
-          <h2 className="about-title">
-            Somewhere between
-            <br />
-            <span>engineering</span>
-            <br />
-            and design.
-          </h2>
-        </ScrollReveal>
+        <div className="about-layout">
+          <div className="about-left">
+            <ScrollReveal delay={100}>
+              <h2 className="about-title">
+                Somewhere between
+                <br />
+                <span>engineering</span>
+                <br />
+                and design.
+              </h2>
+            </ScrollReveal>
 
-        <ScrollReveal delay={150}>
-          <div className="about-object-wrapper">
-            <AboutObject />
+            <ScrollReveal delay={150}>
+              <AboutObject />
+            </ScrollReveal>
           </div>
-        </ScrollReveal>
 
-        <ScrollReveal delay={200}>
-          <div className="about-bottom">
-            <div className="about-tags">
-              <span>DEVELOPMENT</span>
-              <span>UI / UX</span>
-              <span>FULL-STACK</span>
-              <span>DESIGN</span>
-            </div>
-
-            <div className="about-copy">
-              <p>
-                I&apos;m Muhammed Shihan S, a software developer who enjoys
-                turning ideas into useful digital experiences.
+          <div className="about-right">
+            <ScrollReveal delay={220}>
+              <p className="about-kicker">
+                BUILDING WITH BOTH SIDES OF THE BRAIN
               </p>
 
-              <p>
-                I like working across both development and design, especially
-                where engineering, interfaces, and user experience meet.
+              <p className="about-intro">
+                I enjoy working where software engineering and design overlap —
+                building things that work well and feel good to use.
               </p>
-            </div>
+            </ScrollReveal>
           </div>
-        </ScrollReveal>
+        </div>
       </div>
     </section>
   );
