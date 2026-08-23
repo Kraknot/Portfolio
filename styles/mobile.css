@@ -71,14 +71,6 @@
     display: none;
   }
 
-  .mobile-decor {
-    display: block;
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-  }
-
   .mobile-ui-tag {
     position: absolute;
 
@@ -126,17 +118,6 @@
     transform: rotate(-3deg);
 
     animation: mobile-float-alt 7s ease-in-out infinite;
-  }
-}
-
-@keyframes mobile-float {
-  0%,
-  100% {
-    transform: translateY(0) rotate(4deg);
-  }
-
-  50% {
-    transform: translateY(-7px) rotate(4deg);
   }
 }
 
