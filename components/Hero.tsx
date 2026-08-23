@@ -46,6 +46,10 @@ export default function Hero() {
       <br />
       <span className="code-purple">{"}"}</span>
      </div>
+     <div className="mobile-code-label">
+       <span className="code-purple">Top</span>
+       <span>BUILD &amp; DESIGN</span>
+     </div>
     </div>
     </main>
   );

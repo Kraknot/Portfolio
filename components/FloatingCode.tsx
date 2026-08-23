@@ -35,9 +35,9 @@ export default function FloatingCode() {
         <span className="code-cyan">/&gt;</span>
       </div>
 
-      <div className="code-card code-card-label">
-        <span className="code-purple">01</span>
-        <span>BUILD / DESIGN</span>
+      <div className=" code-card-label">
+       <span className="code-purple">Top</span>
+       <span>BUILD & DESIGN</span>
       </div>
 
       <div className="floating-dot dot-one" />
