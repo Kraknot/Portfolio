@@ -526,12 +526,6 @@ a {
   }
 }
 
-/* Keep content updates visible while removing larger repeated movements. */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto !important;
-  }
-
   .rotating-role {
     animation: reduced-role-in 160ms ease-out both;
   }
@@ -555,8 +549,6 @@ a {
     transform: none;
     transition: none;
   }
-}
-
 
 /* About section */
 
@@ -1170,31 +1162,5 @@ a {
 
   50% {
     transform: translate(-60px, 40px);
-  }
-}
-
-
-/* REDUCED MOTION */
-
-@media (prefers-reduced-motion: reduce) {
-  .about::before,
-  .about::after,
-  .about-character-image,
-  .about-orbit-one,
-  .about-orbit-two,
-  .about-detail-content {
-    animation: none;
-  }
-
-  .scroll-reveal {
-    opacity: 1;
-
-    transform: none;
-
-    transition: none;
-  }
-
-  .about-topic {
-    transition: none;
   }
 }
