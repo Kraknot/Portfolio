@@ -4,43 +4,79 @@ import Image from "next/image";
 import { useState } from "react";
 
 const details = {
+  engineering: {
+    label: "ENGINEERING",
+    number: "01",
+    title: "I like building the whole thing.",
+    description:
+      "I enjoy turning ideas into working software, understanding how the pieces connect, and solving the engineering problems behind a product.",
+    items: ["TypeScript", "React / Next.js", "APIs", "Backend systems"],
+  },
+
+  product: {
+    label: "PRODUCT",
+    number: "02",
+    title: "I think beyond the code.",
+    description:
+      "I care about what should be built, who it is for, and whether the final product actually solves the problem it started with.",
+    items: ["Product thinking", "User problems", "Prototyping", "Iteration"],
+  },
+
   uiux: {
     label: "UI / UX",
-    title: "I care about how software feels.",
+    number: "03",
+    title: "The interface still matters.",
     description:
-      "I enjoy thinking about usability, hierarchy, interaction, and the small decisions that make an interface feel intuitive.",
-    items: ["User flows", "Interfaces", "Prototyping", "Interaction"],
+      "Good engineering can still feel bad to use. I enjoy refining hierarchy, interaction, usability, and the small details people actually notice.",
+    items: ["Interaction", "User flows", "Interfaces", "Usability"],
   },
+
   design: {
     label: "DESIGN",
-    title: "Design is part of how I think.",
+    number: "04",
+    title: "Design supports the product.",
     description:
-      "I like experimenting with typography, spacing, visual systems, composition, and interfaces that feel intentional.",
+      "Visual design is another tool I use to make products clearer and more intentional — not the goal by itself.",
     items: ["Typography", "Layout", "Visual systems", "Motion"],
   },
-  code: {
-    label: "CODE",
-    title: "I like turning ideas into working things.",
+
+  learning: {
+    label: "LEARNING",
+    number: "05",
+    title: "Always learning something new.",
     description:
-      "I enjoy solving problems, learning new technologies, and building products rather than stopping at the concept stage.",
-    items: ["TypeScript", "React", "Next.js", "Problem solving"],
+      "I like exploring new tools, frameworks, engineering ideas, and design systems instead of staying inside one fixed stack.",
+    items: ["New frameworks", "System design", "Experiments", "Courses"],
   },
-  fullstack: {
-    label: "FULL-STACK",
-    title: "I like understanding the whole product.",
+
+  sideQuests: {
+    label: "SIDE QUESTS",
+    number: "06",
+    title: "Not everything has to be serious.",
     description:
-      "Frontend experience matters to me, but I also enjoy the backend systems, APIs, and data that make everything work.",
-    items: ["Frontend", "Backend", "APIs", "Databases"],
+      "I like making small experiments, playful interfaces, strange ideas, and things that help me learn by building.",
+    items: [
+      "Mini projects",
+      "Creative coding",
+      "UI experiments",
+      "Random ideas",
+    ],
   },
 } as const;
 
 type DetailKey = keyof typeof details;
 
-const topics = Object.entries(details) as [DetailKey, (typeof details)[DetailKey]][];
+const topics = Object.entries(details) as [
+  DetailKey,
+  (typeof details)[DetailKey],
+][];
 
 export default function AboutObject() {
-  const [activeDetail, setActiveDetail] = useState<DetailKey>("uiux");
+  const [activeDetail, setActiveDetail] =
+    useState<DetailKey>("engineering");
+
   const [hasInteracted, setHasInteracted] = useState(false);
+
   const current = details[activeDetail];
 
   function selectDetail(detail: DetailKey) {
@@ -50,21 +86,26 @@ export default function AboutObject() {
 
   return (
     <div className="about-interaction">
-      <div className="about-visual">
-        <div className="about-orbit about-orbit-one" />
-        <div className="about-orbit about-orbit-two" />
+      <div className="about-visual-area">
+        <div className="about-visual">
+          <div className="about-orbit about-orbit-one" />
+          <div className="about-orbit about-orbit-two" />
 
-        <div className="about-character-image">
-          <Image
-            src="/images/luffy.png"
-            alt="Luffy smiling in a straw hat"
-            width={500}
-            height={500}
-            sizes="(max-width: 900px) 58vw, 280px"
-          />
+          <div className="about-character-image">
+            <Image
+              src="/images/luffy.png"
+              alt="Luffy smiling in a straw hat"
+              width={500}
+              height={500}
+              sizes="(max-width: 700px) 68vw, 310px"
+            />
+          </div>
         </div>
 
-        <div className="about-topics" aria-label="About topics">
+        <div
+          className="about-topics"
+          aria-label="About topics"
+        >
           {topics.map(([key, detail]) => (
             <button
               key={key}
@@ -84,10 +125,12 @@ export default function AboutObject() {
         </div>
 
         <p
-          className={`about-topic-hint ${hasInteracted ? "is-hidden" : ""}`}
+          className={`about-topic-hint ${
+            hasInteracted ? "is-hidden" : ""
+          }`}
           aria-hidden={hasInteracted}
         >
-          Hover a tag to know me better ↗
+          Hover a tag to explore ↗
         </p>
       </div>
 
@@ -97,15 +140,25 @@ export default function AboutObject() {
         aria-live="polite"
         aria-atomic="true"
       >
-        <div className="about-detail-content" key={activeDetail}>
-          <p className="detail-number">{current.label}</p>
+        <div
+          className="about-detail-content"
+          key={activeDetail}
+        >
+          <div className="detail-heading">
+            <span>{current.number}</span>
+            <p>{current.label}</p>
+          </div>
+
           <h3>{current.title}</h3>
-          <p className="detail-description">{current.description}</p>
+
+          <p className="detail-description">
+            {current.description}
+          </p>
 
           <div className="detail-grid">
             {current.items.map((item) => (
               <div key={item}>
-                <span>INTEREST</span>
+                <span>FOCUS</span>
                 <strong>{item}</strong>
               </div>
             ))}

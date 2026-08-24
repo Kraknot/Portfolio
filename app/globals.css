@@ -516,19 +516,25 @@ a {
   }
 }
 
-/* About section */
-
 /* =========================================================
-   ABOUT SECTION
+   ABOUT
    ========================================================= */
 
 .about {
   position: relative;
+
   min-height: 100svh;
 
-  padding: 80px 7vw 90px;
+  padding: 72px 7vw 90px;
 
-  background: #c8c1b4;
+  background:
+    linear-gradient(
+      135deg,
+      #c8c1b4,
+      #c2bbb0 55%,
+      #beb8ad
+    );
+
   color: #181719;
 
   overflow: hidden;
@@ -536,50 +542,51 @@ a {
 
 
 /* =========================================================
-   BACKGROUND DECORATION
+   AMBIENT BACKGROUND
    ========================================================= */
 
-.about::before,
-.about::after {
-  content: "";
-
+.about-ambient {
   position: absolute;
+  inset: 0;
 
-  border-radius: 50%;
-  filter: blur(120px);
-
-  opacity: 0.1;
+  overflow: hidden;
 
   pointer-events: none;
 }
 
-.about::before {
-  width: 420px;
-  height: 420px;
+.about-ambient span {
+  position: absolute;
 
-  top: 20%;
-  left: -160px;
+  width: 520px;
+  height: 520px;
+
+  border-radius: 50%;
+
+  filter: blur(130px);
+
+  opacity: 0.11;
+
+}
+
+.about-ambient-one {
+  top: 8%;
+  left: -200px;
 
   background: #6047c7;
 
-  animation: about-glow-left 15s ease-in-out infinite;
 }
 
-.about::after {
-  width: 380px;
-  height: 380px;
-
-  right: -120px;
-  bottom: 5%;
+.about-ambient-two {
+  right: -190px;
+  bottom: 0;
 
   background: #176f7c;
 
-  animation: about-glow-right 18s ease-in-out infinite;
 }
 
 
 /* =========================================================
-   MAIN CONTAINER
+   INNER
    ========================================================= */
 
 .about-inner {
@@ -594,23 +601,22 @@ a {
 
 
 /* =========================================================
-   SECTION LABEL
+   SECTION HEADER
    ========================================================= */
 
 .about-header {
   display: flex;
   align-items: center;
 
-  gap: 18px;
+  gap: 16px;
 
-  margin-bottom: 42px;
+  margin-bottom: 34px;
 
-  color: #36332f;
-
-  font-size: 11px;
+  font-family: monospace;
+  font-size: 10px;
   font-weight: 700;
 
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
 }
 
 .about-header span {
@@ -619,30 +625,61 @@ a {
 
 .about-header p {
   margin: 0;
+
+  color: #46413a;
 }
 
 
 /* =========================================================
-   MAIN TITLE
+   TOP HEADING COMPOSITION
    ========================================================= */
 
+.about-heading-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.4fr)
+    minmax(280px, 0.6fr);
+
+  align-items: end;
+
+  gap: 80px;
+}
+
+.about-role {
+  margin: 0 0 14px;
+
+  color: #575149;
+
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+}
+
 .about-title {
-  max-width: 1050px;
+  max-width: 900px;
 
   margin: 0;
 
-  font-size: clamp(52px, 6vw, 96px);
-  line-height: 0.9;
+  font-size: clamp(54px, 6.3vw, 102px);
+  line-height: 0.86;
 
   letter-spacing: -0.055em;
 }
 
+.about-title strong {
+  font-weight: inherit;
+}
+
 .about-title span {
-  background: linear-gradient(
-    90deg,
-    #6047c7 0%,
-    #176f7c 100%
-  );
+  background:
+    linear-gradient(
+      90deg,
+      #6047c7,
+      #176f7c
+    );
 
   background-clip: text;
   -webkit-background-clip: text;
@@ -651,104 +688,77 @@ a {
   -webkit-text-fill-color: transparent;
 }
 
+.about-summary {
+  max-width: 390px;
 
-/* =========================================================
-   SCROLL REVEAL
-   ========================================================= */
+  margin: 0 0 8px;
 
-.scroll-reveal {
-  opacity: 0;
+  color: #49443e;
 
-  transform: translateY(30px);
-
-  transition:
-    opacity 700ms ease,
-    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.scroll-reveal.is-visible {
-  opacity: 1;
-
-  transform: translateY(0);
+  font-size: 16px;
+  line-height: 1.65;
 }
 
 
 /* =========================================================
-   ABOUT OBJECT WRAPPER
-   ========================================================= */
-
-.about-object-wrapper {
-  width: 100%;
-
-  margin-top: 42px;
-}
-
-
-/* =========================================================
-   INTERACTIVE AREA
-   LEFT = LUFFY
-   RIGHT = DETAILS
+   INTERACTIVE COMPOSITION
    ========================================================= */
 
 .about-interaction {
   display: grid;
 
   grid-template-columns:
-    minmax(320px, 480px)
-    minmax(320px, 500px);
+    minmax(360px, 520px)
+    minmax(360px, 520px);
 
   align-items: center;
 
-  justify-content: start;
+  justify-content: space-between;
 
-  gap: clamp(50px, 7vw, 110px);
+  gap: clamp(56px, 8vw, 140px);
 
   width: 100%;
+
+  margin-top: 38px;
 }
 
 
 /* =========================================================
-   LUFFY VISUAL
+   LUFFY SIDE
    ========================================================= */
+
+.about-visual-area {
+  position: relative;
+
+  width: min(460px, 100%);
+
+  justify-self: start;
+}
 
 .about-visual {
   position: relative;
 
+  width: 100%;
+  aspect-ratio: 1;
+
   display: grid;
   place-items: center;
 
-  justify-self: start;
-
-  width: min(440px, 100%);
-
-  aspect-ratio: 1;
+  isolation: isolate;
 }
-
-
-/* =========================================================
-   CHARACTER IMAGE
-   ========================================================= */
 
 .about-character-image {
   position: relative;
   z-index: 2;
 
-  width: min(250px, 58%);
-
-  transform-origin: center;
+  width: min(310px, 67%);
 
   filter:
     drop-shadow(
-      0 24px 28px rgba(24, 23, 25, 0.13)
+      0 22px 26px
+      rgba(24, 23, 25, 0.13)
     );
 
-  animation:
-    about-character-float
-    6s
-    ease-in-out
-    infinite;
-
-  will-change: transform;
 }
 
 .about-character-image img {
@@ -758,57 +768,40 @@ a {
   height: auto;
 
   user-select: none;
-
   pointer-events: none;
+
 }
 
 
-/* =========================================================
-   ORBIT LINES
-   ========================================================= */
-
 .about-orbit {
   position: absolute;
+
   z-index: 1;
 
-  border: 1px solid rgba(24, 23, 25, 0.13);
+  border:
+    1px solid rgba(24, 23, 25, 0.13);
+
   border-radius: 50%;
 
   pointer-events: none;
 }
 
 .about-orbit-one {
-  width: 78%;
-  height: 78%;
-
-  transform: rotate(18deg);
-
-  animation:
-    about-orbit-one
-    24s
-    linear
-    infinite;
+  width: 80%;
+  height: 80%;
 }
 
 .about-orbit-two {
-  width: 88%;
+  width: 90%;
   height: 38%;
 
-  border-color: rgba(23, 111, 124, 0.18);
+  border-color:
+    rgba(23, 111, 124, 0.2);
 
-  transform: rotate(-24deg);
-
-  animation:
-    about-orbit-two
-    30s
-    linear
-    infinite;
+  transform: rotate(-25deg);
 }
 
 
-/* =========================================================
-   TOPIC BUTTON CONTAINER
-   ========================================================= */
 
 .about-topics {
   position: absolute;
@@ -819,11 +812,6 @@ a {
   pointer-events: none;
 }
 
-
-/* =========================================================
-   TOPIC BUTTONS
-   ========================================================= */
-
 .about-topic {
   position: absolute;
 
@@ -831,17 +819,19 @@ a {
 
   padding: 10px 16px;
 
-  border: 1px solid #181719;
+  border:
+    1px solid rgba(24, 23, 25, 0.92);
+
   border-radius: 999px;
 
   background: #181719;
   color: #c8c1b4;
 
   font-family: monospace;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
 
-  letter-spacing: 0.12em;
+  letter-spacing: 0.11em;
 
   cursor: pointer;
 
@@ -855,21 +845,20 @@ a {
     box-shadow 180ms ease;
 }
 
-.about-topic:hover {
-  transform: translateY(-3px);
-
-  box-shadow:
-    0 10px 28px rgba(24, 23, 25, 0.16);
-}
-
+.about-topic:hover,
 .about-topic:focus-visible {
   transform: translateY(-3px);
 
-  outline: 2px solid #176f7c;
-  outline-offset: 3px;
-
   box-shadow:
-    0 10px 28px rgba(24, 23, 25, 0.16);
+    0 10px 25px
+    rgba(24, 23, 25, 0.15);
+}
+
+.about-topic:focus-visible {
+  outline:
+    2px solid #176f7c;
+
+  outline-offset: 3px;
 }
 
 .about-topic.is-active {
@@ -879,60 +868,66 @@ a {
   color: #f0ece2;
 
   box-shadow:
-    0 8px 24px rgba(96, 71, 199, 0.2);
+    0 8px 24px
+    rgba(96, 71, 199, 0.22);
 }
 
 
-/* TOPIC POSITIONS */
+.topic-engineering {
+  top: 16%;
+  left: -6%;
+}
+
+.topic-product {
+  top: 3%;
+  right: -4%;
+}
 
 .topic-uiux {
-  top: 24%;
-  left: 0;
+  top: 52%;
+  left: -7%;
 }
 
 .topic-design {
-  top: 13%;
-  right: 2%;
+  top: 44%;
+  right: -8%;
 }
 
-.topic-code {
-  bottom: 23%;
-  left: 5%;
+.topic-learning {
+  bottom: 2%;
+  left: 0;
 }
 
-.topic-fullstack {
-  right: 0;
-  bottom: 17%;
+.topic-sideQuests {
+  right: -7%;
+  bottom: 4%;
 }
 
-
-/*  HOVER INSTRUCTION*/
 
 .about-topic-hint {
   position: absolute;
 
   left: 50%;
-  bottom: 1%;
+  bottom: 0;
 
   z-index: 3;
 
   width: max-content;
-  max-width: 90%;
 
   margin: 0;
 
   color: #5e584f;
 
   font-family: monospace;
-  font-size: 10px;
+  font-size: 9px;
 
-  letter-spacing: 0.08em;
+  letter-spacing: 0.09em;
 
   transform: translateX(-50%);
 
   transition:
-    opacity 240ms ease,
-    transform 240ms ease;
+    opacity 220ms ease,
+    transform 220ms ease;
 
   pointer-events: none;
 }
@@ -946,73 +941,75 @@ a {
 }
 
 
-/* RIGHT DETAIL PANEL */
-
 .about-detail-panel {
-  align-self: center;
+  justify-self: end;
 
   width: 100%;
-  max-width: 500px;
+  max-width: 520px;
 
-  min-height: 330px;
+  min-height: 320px;
 }
-
-
-/* DETAIL CHANGE ANIMATION */
 
 .about-detail-content {
   animation:
-    about-detail-in
+    about-detail-enter
     380ms
     cubic-bezier(0.16, 1, 0.3, 1)
     both;
 }
 
 
-/* DETAIL LABEL */
 
-.detail-number {
-  margin: 0 0 22px;
+.detail-heading {
+  display: flex;
+  align-items: center;
 
-  color: #6047c7;
+  gap: 14px;
+
+  margin-bottom: 20px;
 
   font-family: monospace;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
 
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
 }
 
+.detail-heading span {
+  color: #6047c7;
+}
 
-/* DETAIL TITLE */
+.detail-heading p {
+  margin: 0;
+
+  color: #5c564f;
+}
+
 
 .about-detail-panel h3 {
   max-width: 500px;
 
   margin: 0;
 
-  font-size: clamp(34px, 3.3vw, 58px);
-  line-height: 0.96;
+  font-size:
+    clamp(38px, 3.5vw, 60px);
 
-  letter-spacing: -0.045em;
+  line-height: 0.94;
+
+  letter-spacing: -0.047em;
 }
 
-
-/* DETAIL DESCRIPTION */
-
 .detail-description {
-  max-width: 430px;
+  max-width: 440px;
 
-  margin: 26px 0 0;
+  margin: 25px 0 0;
 
   color: #48433d;
 
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.65;
 }
 
-
-/* DETAIL GRID*/
 
 .detail-grid {
   display: grid;
@@ -1022,14 +1019,14 @@ a {
 
   gap: 16px;
 
-  margin-top: 34px;
+  margin-top: 32px;
 }
 
 .detail-grid div {
-  padding-top: 14px;
+  padding-top: 12px;
 
   border-top:
-    1px solid rgba(24, 23, 25, 0.18);
+    1px solid rgba(24, 23, 25, 0.17);
 }
 
 .detail-grid span {
@@ -1042,91 +1039,28 @@ a {
   font-family: monospace;
   font-size: 8px;
 
-  letter-spacing: 0.14em;
+  letter-spacing: 0.13em;
 }
 
 .detail-grid strong {
   color: #181719;
 
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
 }
 
-
-/* ANIMATIONS */
-
-@keyframes about-character-float {
-  0%,
-  100% {
-    transform:
-      translateY(0)
-      rotate(-0.5deg);
-  }
-
-  50% {
-    transform:
-      translateY(-8px)
-      rotate(0.5deg);
-  }
-}
-
-
-@keyframes about-detail-in {
+@keyframes about-detail-enter {
   from {
     opacity: 0;
 
-    transform: translateX(18px);
+    transform:
+      translateX(22px);
   }
 
   to {
     opacity: 1;
 
-    transform: translateX(0);
-  }
-}
-
-
-@keyframes about-orbit-one {
-  from {
-    rotate: 0deg;
-  }
-
-  to {
-    rotate: 360deg;
-  }
-}
-
-
-@keyframes about-orbit-two {
-  from {
-    rotate: 0deg;
-  }
-
-  to {
-    rotate: -360deg;
-  }
-}
-
-
-@keyframes about-glow-left {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(70px, -30px);
-  }
-}
-
-
-@keyframes about-glow-right {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(-60px, 40px);
+    transform:
+      translateX(0);
   }
 }

@@ -4,6 +4,11 @@ import ScrollReveal from "@/components/ScrollReveal";
 export default function About() {
   return (
     <section id="about" className="about">
+      <div className="about-ambient" aria-hidden="true">
+        <span className="about-ambient-one" />
+        <span className="about-ambient-two" />
+      </div>
+
       <div className="about-inner">
         <ScrollReveal>
           <div className="about-header">
@@ -12,36 +17,28 @@ export default function About() {
           </div>
         </ScrollReveal>
 
-        <div className="about-layout">
-          <div className="about-left">
-            <ScrollReveal delay={100}>
-              <h2 className="about-title">
-                Somewhere between
-                <br />
-                <span>engineering</span>
-                <br />
-                and design.
-              </h2>
-            </ScrollReveal>
+        <div className="about-heading-row">
+          <ScrollReveal delay={80}>
+            <p className="about-role">SOFTWARE ENGINEER · PRODUCT MINDED</p>
 
-            <ScrollReveal delay={150}>
-              <AboutObject />
-            </ScrollReveal>
-          </div>
+            <h2 className="about-title">
+              I build products
+              <br />
+              that <strong>work.</strong>
+              <br />
+              <span>And care how they feel.</span>
+            </h2>
+          </ScrollReveal>
 
-          <div className="about-right">
-            <ScrollReveal delay={220}>
-              <p className="about-kicker">
-                BUILDING WITH BOTH SIDES OF THE BRAIN
-              </p>
-
-              <p className="about-intro">
-                I enjoy working where software engineering and design overlap —
-                building things that work well and feel good to use.
-              </p>
-            </ScrollReveal>
-          </div>
+          <ScrollReveal delay={160}>
+            <p className="about-summary">
+              I like understanding the whole product — from the systems
+              underneath it to the interface someone actually interacts with.
+            </p>
+          </ScrollReveal>
         </div>
+
+        <AboutObject />
       </div>
     </section>
   );

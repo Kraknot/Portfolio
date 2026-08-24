@@ -220,23 +220,40 @@
     line-height: 0.9;
   }
 
-  .about-object-wrapper {
-    margin-top: 56px;
-  }
-
   .about-interaction {
     grid-template-columns: minmax(0, 1fr);
-    gap: 52px;
+    gap: 36px;
     width: 100%;
   }
 
-  .about-visual {
+  .about-visual-area {
     width: min(480px, 100%);
     margin: 0 auto;
   }
 
   .about-character-image {
-    width: min(250px, 58%);
+    width: min(300px, 67%);
+  }
+
+  .about-topics {
+    position: static;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+
+    margin-top: 12px;
+
+    pointer-events: auto;
+  }
+
+  .about-topic {
+    position: static;
+  }
+
+  .about-topic-hint {
+    display: none;
   }
 
   .about-detail-panel {
@@ -269,22 +286,6 @@
   .about-topic {
     padding-inline: 13px;
     font-size: 9px;
-  }
-
-  .topic-uiux {
-    left: -2px;
-  }
-
-  .topic-design {
-    right: -2px;
-  }
-
-  .topic-code {
-    left: 2px;
-  }
-
-  .topic-fullstack {
-    right: -2px;
   }
 
   .about-topic-hint {
