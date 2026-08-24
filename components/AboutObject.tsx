@@ -1,15 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const details = {
-  engineering: {
-    label: "ENGINEERING",
+  craft: {
+    label: "CRAFTING",
     number: "01",
     title: "I like building things people can actually use.",
     description:
-      "Software engineering is my main focus. I enjoy turning ideas into useful software — whether it helps with everyday tasks, solves a problem, or simply gives someone something fun to use.",
+      "Software development is my main focus. I enjoy turning ideas into useful software, whether it helps with everyday tasks, solves a problem or simply gives someone something fun to use.",
     cards: [
       {
         label: "HOW I WORK",
@@ -33,9 +33,9 @@ const details = {
   teamwork: {
     label: "TEAMWORK",
     number: "02",
-    title: "I work well with people.",
+    title: "Good software is easier when communication is simple.",
     description:
-      "I communicate clearly, adapt quickly to how a team works, and I’m comfortable helping others when I can. I work best when the goal and expectations are clearly understood.",
+      "I communicate clearly, adapt quickly to how a team works and I’m comfortable helping others when I can. I work best when the goal and expectations are clearly understood.",
     cards: [
       {
         label: "COMMUNICATION",
@@ -59,13 +59,13 @@ const details = {
   learning: {
     label: "LEARNING",
     number: "03",
-    title: "I like figuring things out.",
+    title: "Always curious about what's under the hood.",
     description:
-      "Research and learning are a big part of how I work. If I don’t understand something yet, I’m comfortable digging into it until I do.",
+      "Research and learning are a big part of how I work. When I run into something unfamiliar, I enjoy digging into docs, source code and examples until I thoroughly understand how it works.",
     cards: [
       {
         label: "RESEARCH",
-        text: "I look into technologies, ideas, and tools when something catches my interest.",
+        text: "I look into technologies, ideas and tools when something catches my interest.",
       },
       {
         label: "LEARNING",
@@ -87,7 +87,7 @@ const details = {
     number: "04",
     title: "Sometimes the best debugging tool is a break.",
     description:
-      "When I get stuck, I don’t like staring at the same problem forever. I step away, clear my head, come back, research what I’m missing, and look at the problem again from a different angle.",
+      "When I get stuck, I don’t like staring at the same problem forever. I step away, clear my head, come back, research what I’m missing and look at the problem again from a different angle.",
     cards: [
       {
         label: "WHEN STUCK",
@@ -99,7 +99,7 @@ const details = {
       },
       {
         label: "INVESTIGATE",
-        text: "Research, test assumptions, and check what I may have overlooked.",
+        text: "Research, test assumptions and check what I may have overlooked.",
       },
       {
         label: "TRY AGAIN",
@@ -111,9 +111,9 @@ const details = {
   creativity: {
     label: "CREATIVITY",
     number: "05",
-    title: "I like making software feel interesting.",
+    title: "Good software shouldn't feel boring to interact with.",
     description:
-      "Engineering comes first, but I enjoy the creative side too. UI and UX are something I play with as a hobby because I like experimenting with how software looks, behaves, and feels.",
+      "Engineering comes first, but I enjoy the creative side too. UI and UX are something I play with as a hobby because I like experimenting with how software looks, behaves and feels.",
     cards: [
       {
         label: "INTERFACES",
@@ -124,8 +124,8 @@ const details = {
         text: "I like when software has some personality instead of feeling completely generic.",
       },
       {
-        label: "UI / UX",
-        text: "A hobby and creative interest — not my main professional focus.",
+        label: "USER MINDSET",
+        text: "Building from the perspective of someone interacting with the tool for the first time.",
       },
       {
         label: "EXPERIMENTS",
@@ -137,13 +137,13 @@ const details = {
   side_quest: {
     label: "Side Quests",
     number: "06",
-    title: "I’m curious even when I’m not coding.",
+    title: "Fueling creativity through story and play.",
     description:
-      "Outside development, I spend time researching technology and whatever else catches my attention. And when I’m not doing that, there’s a good chance I’m watching anime or playing games.",
+      "Not every problem needs to be solved with code. I spend my off-hours absorbing great storytelling, analyzing game design from a player's perspective and accumulating random internet trivia.",
     cards: [
       {
         label: "TECH",
-        text: "Researching technology, tools, and interesting ideas.",
+        text: "Skimming emerging tech trends and open source developments just for fun.",
       },
       {
         label: "ANIME",
@@ -151,7 +151,7 @@ const details = {
       },
       {
         label: "GAMES",
-        text: "Playing, exploring, and occasionally getting way too invested.",
+        text: "Playing, exploring and occasionally getting way too invested.",
       },
       {
         label: "RABBIT HOLES",
@@ -169,17 +169,49 @@ const topics = Object.entries(details) as [
 ][];
 
 export default function AboutObject() {
-  const [activeDetail, setActiveDetail] =
-  useState<DetailKey>("engineering");
+const [activeDetail, setActiveDetail] =
+  useState<DetailKey>("craft");
 
-  const [hasInteracted, setHasInteracted] = useState(false);
+const [hasInteracted, setHasInteracted] = useState(false);
 
-  const current = details[activeDetail];
+const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  function selectDetail(detail: DetailKey) {
-    setActiveDetail(detail);
-    setHasInteracted(true);
+const current = details[activeDetail];
+
+function startAutoCycle() {
+  if (timerRef.current) {
+    clearInterval(timerRef.current);
   }
+
+  timerRef.current = setInterval(() => {
+    setActiveDetail((currentDetail) => {
+      const currentIndex = topics.findIndex(
+        ([key]) => key === currentDetail
+      );
+
+      const nextIndex = (currentIndex + 1) % topics.length;
+
+      return topics[nextIndex][0];
+    });
+  }, 20000);
+}
+
+useEffect(() => {
+  startAutoCycle();
+
+  return () => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+  };
+}, []);
+
+function selectDetail(detail: DetailKey) {
+  setActiveDetail(detail);
+  setHasInteracted(true);
+
+  startAutoCycle();
+}
 
   return (
     <div className="about-interaction">
@@ -187,6 +219,7 @@ export default function AboutObject() {
         <div className="about-visual">
           <div className="about-orbit about-orbit-one" />
           <div className="about-orbit about-orbit-two" />
+
 
           <div className="about-character-image">
             <Image
@@ -227,7 +260,7 @@ export default function AboutObject() {
           }`}
           aria-hidden={hasInteracted}
         >
-          Hover a tag to explore ↗
+          Hover a tag to explore ↑
         </p>
       </div>
 

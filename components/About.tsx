@@ -19,11 +19,11 @@ export default function About() {
 
         <div className="about-heading-row">
           <ScrollReveal delay={80}>
-            <p className="about-role">SOFTWARE ENGINEER · ALWAYS LEARNING</p>
+            <p className="about-role">SOFTWARE DEVELOPER · ALWAYS LEARNING</p>
 
             <h2 className="about-title">
-               Building useful things, <br />
-              <span>one problem at a time.</span>
+               Focused on craft, <br />
+              <span>Driven by outcome.</span>
               </h2>
           </ScrollReveal>
         </div>
