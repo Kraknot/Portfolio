@@ -19,22 +19,12 @@ export default function About() {
 
         <div className="about-heading-row">
           <ScrollReveal delay={80}>
-            <p className="about-role">SOFTWARE ENGINEER · PRODUCT MINDED</p>
+            <p className="about-role">SOFTWARE ENGINEER · ALWAYS LEARNING</p>
 
             <h2 className="about-title">
-              I build products
-              <br />
-              that <strong>work.</strong>
-              <br />
-              <span>And care how they feel.</span>
-            </h2>
-          </ScrollReveal>
-
-          <ScrollReveal delay={160}>
-            <p className="about-summary">
-              I like understanding the whole product — from the systems
-              underneath it to the interface someone actually interacts with.
-            </p>
+               Building useful things, <br />
+              <span>one problem at a time.</span>
+              </h2>
           </ScrollReveal>
         </div>
 
