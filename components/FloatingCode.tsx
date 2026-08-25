@@ -64,7 +64,7 @@ const code = {
       <div>
         &nbsp;&nbsp;
         <span className="code-gold">
-          &quot;engineering&quot;
+          &quot;Developer&quot;
         </span>
         : [
       </div>

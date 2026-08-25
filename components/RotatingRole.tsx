@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 
 const roles = [
-  "Software engineer",
-  "Full-stack developer",
+  "Software Developer",
+  "Full-stack Developer",
   "UI/UX enjoyer",
   "Creative coder",
   "Interface enthusiast",

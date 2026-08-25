@@ -5,11 +5,11 @@ const tech = [
   "Next.js",
   "JavaScript",
   "Node.js",
-  "Docker",
+  "AWS",
   "APIs",
   "Git & GitHub",
   "Tailwind CSS",
-  "Vercel & AWS",
+  "Vercel",
 ];
 
 export default function TechMarquee() {

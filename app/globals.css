@@ -401,8 +401,8 @@ a {
 
   background: linear-gradient(
     90deg,
-    var(--violet),
-    var(--cyan)
+   #0ebad8ee,
+   #d7e6e9
   );
 
   -webkit-background-clip: text;
