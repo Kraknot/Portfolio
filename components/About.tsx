@@ -1,5 +1,4 @@
 import AboutObject from "@/components/AboutObject";
-import ScrollReveal from "@/components/ScrollReveal";
 
 export default function About() {
   return (
@@ -10,22 +9,18 @@ export default function About() {
       </div>
 
       <div className="about-inner">
-        <ScrollReveal>
-          <div className="about-header">
-            <span>02</span>
-            <p>ABOUT</p>
-          </div>
-        </ScrollReveal>
+        <div className="about-header">
+          <span>02</span>
+          <p>ABOUT</p>
+        </div>
 
         <div className="about-heading-row">
-          <ScrollReveal delay={80}>
-            <p className="about-role">SOFTWARE DEVELOPER · ALWAYS LEARNING</p>
+          <p className="about-role">SOFTWARE DEVELOPER · ALWAYS LEARNING</p>
 
-            <h2 className="about-title">
-               Focused on craft, <br />
-              <span>Driven by outcome.</span>
-              </h2>
-          </ScrollReveal>
+          <h2 className="about-title">
+            Focused on craft, <br />
+            <span>Driven by outcome.</span>
+          </h2>
         </div>
 
         <AboutObject />

@@ -1,9 +1,10 @@
 import RotatingRole from "@/components/RotatingRole";
 import FloatingCode from "@/components/FloatingCode";
+import TechMarquee from "./TechMarquee";
 
 export default function Hero() {
   return (
-    <main className="hero">
+    <main id="home" className="hero">
       <div className="hero-content">
         <p className="hero-eyebrow">
           SOFTWARE DEVELOPER
@@ -27,6 +28,8 @@ export default function Hero() {
       </div>
 
       <FloatingCode />
+
+      <TechMarquee />
 
       <div className="hero-scroll">
         <span>Scroll to explore</span>

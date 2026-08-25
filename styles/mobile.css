@@ -75,8 +75,13 @@
     animation: scroll-arrow 1.8s ease-in-out infinite;
   }
 
-  .floating-code {
+  .floating-editor {
     display: none;
+  }
+
+  .hero-tech-marquee {
+    bottom: 62px;
+    width: 86vw;
   }
 
   .mobile-ui-tag {
@@ -270,27 +275,12 @@
     margin-top: 24px;
   }
 
-  .about-bottom {
-    grid-template-columns: 1fr;
-    gap: 55px;
-    margin-top: 90px;
-  }
-
-  .about-copy p {
-    font-size: 16px;
-    line-height: 1.7;
-  }
 }
 
 @media (max-width: 480px) {
   .about-topic {
     padding-inline: 13px;
     font-size: 9px;
-  }
-
-  .about-topic-hint {
-    font-size: 9px;
-    letter-spacing: 0.04em;
   }
 
   .detail-grid {

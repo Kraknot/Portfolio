@@ -172,8 +172,6 @@ export default function AboutObject() {
 const [activeDetail, setActiveDetail] =
   useState<DetailKey>("craft");
 
-const [hasInteracted, setHasInteracted] = useState(false);
-
 const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
 const current = details[activeDetail];
@@ -208,8 +206,6 @@ useEffect(() => {
 
 function selectDetail(detail: DetailKey) {
   setActiveDetail(detail);
-  setHasInteracted(true);
-
   startAutoCycle();
 }
 
@@ -254,13 +250,8 @@ function selectDetail(detail: DetailKey) {
           ))}
         </div>
 
-        <p
-          className={`about-topic-hint ${
-            hasInteracted ? "is-hidden" : ""
-          }`}
-          aria-hidden={hasInteracted}
-        >
-          Hover a tag to explore ↑
+        <p className= "about-topic-hint">
+          Auto exploring · hover any node to take control
         </p>
       </div>
 
