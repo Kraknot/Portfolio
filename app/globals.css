@@ -39,6 +39,8 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
+  width: 100%;
+  overflow-x: hidden;
 }
 
 a {
@@ -51,39 +53,53 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
 /* Intro is Here */
 
 .intro-loader {
   position: fixed;
+  transform-origin: center center;
   inset: 0;
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #0f0f11;
-  color: #f4f1e8;
   overflow: hidden;
-  animation: intro-hide 1ms linear 2.45s forwards;
+  background: 
+    radial-gradient( circle at 20% 20%, rgba(116, 91, 135, 0.16), transparent 38% ),
+    radial-gradient( circle at 80% 75%, rgba(178, 145, 98, 0.12),transparent 42% ),
+    linear-gradient( 135deg, #0b0b0d, #121116 48%, #0d0d0f  );
+  animation: intro-screen-exit 350ms cubic-bezier(0.76, 0, 0.24, 1) 1.15s forwards;
 }
 
-.intro-loader-content {
-  position: relative;
-  z-index: 2;
-  overflow: hidden;
-}
 
 .intro-loader-name {
+  z-index: 3;
   margin: 0;
   font-size: clamp(64px, 13vw, 210px);
+  transform-origin: center center;
   font-weight: 700;
   line-height: 0.82;
   letter-spacing: -0.065em;
+  text-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  background: linear-gradient( 105deg, #f8f8f7 0%, #d8c6a5 38%, #fefbff 55%, #ded8cf 76%, #f3efe7 100% );
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
   transform: translateY(115%);
   animation:
-    intro-name-rise 850ms cubic-bezier(0.16, 1, 0.3, 1) 180ms forwards,
-    intro-name-expand 850ms cubic-bezier(0.16, 1, 0.3, 1) 900ms forwards,
-    intro-name-exit 550ms cubic-bezier(0.76, 0, 0.24, 1) 1.45s forwards;
+    intro-name-rise 650ms cubic-bezier(0.16, 1, 0.3, 1) 80ms forwards,
+    intro-name-expand 600ms cubic-bezier(0.16, 1, 0.3, 1) 500ms forwards,
+    intro-name-exit 700ms cubic-bezier(0.76, 0, 0.24, 1) 950ms forwards;
 }
+
 
 /* Navbar Starts here */
 
@@ -98,11 +114,7 @@ a {
 }
 
 .navbar-shell .navbar {
-  transition:
-    background 300ms ease,
-    border-color 300ms ease,
-    color 300ms ease,
-    box-shadow 300ms ease;
+  transition: background 300ms ease, border-color 300ms ease, color 300ms ease, box-shadow 300ms ease;
 }
 
 .navbar-shell.navbar-light .navbar {
@@ -225,12 +237,8 @@ a {
 
 
 
-
-
-
-
 @keyframes intro-name-rise {
-  to {
+to {
     transform: translateY(0);
   }
 }
@@ -246,14 +254,14 @@ a {
 }
 
 @keyframes intro-name-exit {
-  from {
+  0% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: scale(1);
   }
 
-  to {
+  100% {
     opacity: 0;
-    transform: translateY(-55px) scale(1.05);
+    transform: scale(2.8);
   }
 }
 
@@ -263,14 +271,40 @@ a {
   }
 }
 
+@keyframes intro-gradient {
+  0% {
+    background-position: 0% 30%;
+  }
 
+  100% {
+    background-position: 100% 70%;
+  }
+}
 
+@keyframes intro-name-gradient {
+  from {
+    background-position: 0% 50%;
+  }
 
+  to {
+    background-position: 100% 50%;
+  }
+}
 
+@keyframes intro-screen-exit {
+  0% {
+    opacity: 1;
+  }
 
+  60% {
+    opacity: 1;
+  }
 
-
-
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 
 
 

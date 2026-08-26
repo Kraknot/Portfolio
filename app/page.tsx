@@ -8,7 +8,6 @@ export default function Home() {
   return (
     <>
       <IntroLoader />
-
       <Navbar />
       <Hero />
       <About />

@@ -10,13 +10,17 @@ export default function IntroLoader() {
     window.scrollTo(0, 0);
     document.body.style.overflow = "hidden";
 
-    const timer = window.setTimeout(() => {
+    const unlockTimer = window.setTimeout(() => {
       document.body.style.overflow = "";
+    }, 1400);
+
+    const removeTimer = window.setTimeout(() => {
       setFinished(true);
-    }, 2300);
+    }, 1750);
 
     return () => {
-      window.clearTimeout(timer);
+      window.clearTimeout(unlockTimer);
+      window.clearTimeout(removeTimer);
       document.body.style.overflow = "";
     };
   }, []);

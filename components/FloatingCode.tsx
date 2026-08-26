@@ -156,7 +156,7 @@ export default function FloatingCode() {
       activeTab === "developer"
         ? "Muhammed Shihan S — Software Developer"
         : activeTab === "skills"
-        ? "Engineering, Full-stack, Problem solving, Research, UI/UX"
+        ? "Developer, Full-stack, Problem solving, Research, UI/UX"
         : "kraknot@portfolio:~$ always learning";
 
     await navigator.clipboard.writeText(text);
