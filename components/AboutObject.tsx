@@ -224,6 +224,7 @@ function selectDetail(detail: DetailKey) {
               width={500}
               height={500}
               sizes="(max-width: 700px) 68vw, 310px"
+              loading="eager"
             />
           </div>
         </div>

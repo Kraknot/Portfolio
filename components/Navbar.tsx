@@ -7,41 +7,37 @@ import { useEffect, useState } from "react";
 export default function Navbar() {
   const [onLightSection, setOnLightSection] = useState(false);
   
-  useEffect(() => { const about = document.getElementById("about");
+  useEffect(() => 
+    { 
+    const about = document.getElementById("about");
     if (!about) return;
     const updateNavbarTheme = () => { const rect = about.getBoundingClientRect();
     const triggerPoint = 90;
     const insideAbout = rect.top <= triggerPoint && rect.bottom > triggerPoint;
     setOnLightSection(insideAbout);
-  };
+    };
   
   updateNavbarTheme();
   window.addEventListener("scroll", updateNavbarTheme, { passive: true,});
   window.addEventListener("resize", updateNavbarTheme);
-  return () => {
+  return () => 
+    {
     window.removeEventListener("scroll", updateNavbarTheme);
     window.removeEventListener("resize", updateNavbarTheme); };
   }, []);
 
-  function scrollToSection(id: string) {
+ function scrollToSection(id: string) {
   const section = document.getElementById(id);
   if (!section) return;
-  section.scrollIntoView({
-  behavior: "smooth",
-  block: "start", });
-  }
+  const top = section.getBoundingClientRect().top + window.scrollY; 
+  window.scrollTo({ top, behavior: "smooth",});
+ }
 
   return (
     <header className={`navbar-shell ${ onLightSection ? "navbar-light" : "" }`}>
       <nav className="navbar">
         <Link href="#home" className="navbar-brand">
-          <Image
-            src="/images/logo.png"
-            alt="Kraknot logo"
-            width={28}
-            height={28}
-          />
-
+          <Image src="/images/logo.png" alt="Kraknot logo" width={28}  height={28} />
           <span>Kraknot</span>
         </Link>
 

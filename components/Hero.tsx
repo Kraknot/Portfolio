@@ -6,31 +6,19 @@ export default function Hero() {
   return (
     <main id="home" className="hero">
       <div className="hero-content">
-        <p className="hero-eyebrow">
-          SOFTWARE DEVELOPER
-        </p>
-
-        <h1 className="hero-title">
-          Muhammed
-          <br />
-          Shihan S
-        </h1>
+        <p className="hero-eyebrow"> SOFTWARE DEVELOPER </p>
+        <h1 className="hero-title"> Muhammed <br /> Shihan S </h1>
 
         <div className="hero-role">
           <span className="role-dot" />
           <RotatingRole />
         </div>
 
-        <p className="hero-description">
-          I build software and digital experiences
-          with a love for thoughtful interfaces.
-        </p>
+        <p className="hero-description"> I build software and digital experiences with a love for thoughtful interfaces.</p>
       </div>
-
       <FloatingCode />
-
       <TechMarquee />
-
+      
       <div className="hero-scroll">
         <span>Scroll to explore</span>
         <span>↓</span>
