@@ -5,7 +5,7 @@
 
 
 :root {
-  --background: #121214;
+  --background: #0b0b0d;
   --foreground: #f4f1e8;
   --muted: #a6a3a0;
   --surface: #1c1c20;
@@ -39,8 +39,6 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  width: 100%;
-  overflow-x: hidden;
 }
 
 a {
@@ -58,46 +56,99 @@ html {
   scrollbar-gutter: stable;
 }
 
+.smooth-canvas {
+  position: fixed;
+  inset: 0;
+
+  z-index: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+}
+
+.site-content {
+  position: relative;
+  z-index: 1;
+}
+
 /* Intro is Here */
 
 .intro-loader {
   position: fixed;
-  transform-origin: center center;
   inset: 0;
   z-index: 9999;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   overflow: hidden;
-  background: 
-    radial-gradient( circle at 20% 20%, rgba(116, 91, 135, 0.16), transparent 38% ),
-    radial-gradient( circle at 80% 75%, rgba(178, 145, 98, 0.12),transparent 42% ),
-    linear-gradient( 135deg, #0b0b0d, #121116 48%, #0d0d0f  );
-  animation: intro-screen-exit 350ms cubic-bezier(0.76, 0, 0.24, 1) 1.15s forwards;
+  pointer-events: none;
+
+  background: transparent;
 }
 
+.intro-panel {
+  position: absolute;
+  left: 0;
+
+  width: 100%;
+  height: 50.5%;
+
+  background: #0e0e11;
+
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.intro-panel-top {
+  top: 0;
+  height: calc(50% + 3px);
+  animation: intro-panel-top-exit 950ms  cubic-bezier(0.76, 0, 0.24, 1) 1050ms forwards;
+}
+
+.intro-panel-bottom {
+  bottom: 0;
+  height: calc(50% + 3px);
+  animation: intro-panel-bottom-exit 950ms cubic-bezier(0.76, 0, 0.24, 1) 1050ms forwards;
+}
+
+.intro-loader-content {
+  position: relative;
+  z-index: 3;
+  width: min(1500px, 92vw);
+  text-align: center;
+}
+
+.intro-name-mask {
+  overflow: hidden;
+  padding: 0.12em 0 0.18em;
+}
 
 .intro-loader-name {
-  z-index: 3;
   margin: 0;
   font-size: clamp(64px, 13vw, 210px);
-  transform-origin: center center;
   font-weight: 700;
   line-height: 0.82;
   letter-spacing: -0.065em;
-  text-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
-  background: linear-gradient( 105deg, #f8f8f7 0%, #d8c6a5 38%, #fefbff 55%, #ded8cf 76%, #f3efe7 100% );
+  transform-origin: center center;
+  background: linear-gradient( 105deg, #f8f8f7 0%, #d8c6a5 38%, #fefbff 55%, #ded8cf 76%, #f3efe7 100%  );
   background-size: 200% 100%;
   background-position: 0% 50%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  transform: translateY(115%);
-  animation:
-    intro-name-rise 650ms cubic-bezier(0.16, 1, 0.3, 1) 80ms forwards,
-    intro-name-expand 600ms cubic-bezier(0.16, 1, 0.3, 1) 500ms forwards,
-    intro-name-exit 700ms cubic-bezier(0.76, 0, 0.24, 1) 950ms forwards;
+  text-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  transform: translateY(120%);
+  animation: 
+    intro-name-rise  650ms cubic-bezier(0.16, 1, 0.3, 1)  80ms forwards,
+    intro-name-expand  600ms cubic-bezier(0.16, 1, 0.3, 1) 500ms forwards,
+    intro-name-exit 650ms cubic-bezier(0.76, 0, 0.24, 1) 700ms forwards,
+    intro-name-gradient 1300ms ease 100ms forwards;
+  will-change:  transform,  opacity, letter-spacing;
 }
 
 
@@ -145,8 +196,7 @@ html {
   border-radius: 999px;
   background: rgba(16, 16, 20, 0.86);
   backdrop-filter: blur(16px);
-  box-shadow:
-    0 14px 45px rgba(0, 0, 0, 0.22),
+  box-shadow:0 ,14px 45px rgba(0, 0, 0, 0.22)
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
   pointer-events: auto;
 }
@@ -236,9 +286,13 @@ html {
 }
 
 
-
 @keyframes intro-name-rise {
-to {
+  from {
+    transform:
+      translateY(120%);
+  }
+
+  to {
     transform: translateY(0);
   }
 }
@@ -253,34 +307,6 @@ to {
   }
 }
 
-@keyframes intro-name-exit {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  100% {
-    opacity: 0;
-    transform: scale(2.8);
-  }
-}
-
-@keyframes intro-hide {
-  to {
-    visibility: hidden;
-  }
-}
-
-@keyframes intro-gradient {
-  0% {
-    background-position: 0% 30%;
-  }
-
-  100% {
-    background-position: 100% 70%;
-  }
-}
-
 @keyframes intro-name-gradient {
   from {
     background-position: 0% 50%;
@@ -291,18 +317,36 @@ to {
   }
 }
 
-@keyframes intro-screen-exit {
+@keyframes intro-name-exit {
   0% {
     opacity: 1;
-  }
-
-  60% {
-    opacity: 1;
+    transform: scale(1);
   }
 
   100% {
     opacity: 0;
-    visibility: hidden;
+    transform: scale(1.35);
+    filter: blur(4px);
+  }
+}
+
+@keyframes intro-panel-top-exit {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-101%);
+  }
+}
+
+@keyframes intro-panel-bottom-exit {
+  from { 
+    transform: translateY(0);
+  }
+
+  to {
+    transform:translateY(101%);
   }
 }
 

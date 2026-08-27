@@ -12,11 +12,11 @@ export default function IntroLoader() {
 
     const unlockTimer = window.setTimeout(() => {
       document.body.style.overflow = "";
-    }, 1400);
+    }, 1500);
 
     const removeTimer = window.setTimeout(() => {
       setFinished(true);
-    }, 1750);
+    }, 1800);
 
     return () => {
       window.clearTimeout(unlockTimer);
@@ -29,10 +29,12 @@ export default function IntroLoader() {
 
   return (
     <div className="intro-loader">
+      <div className="intro-panel intro-panel-top" aria-hidden="true" />
+      <div className="intro-panel intro-panel-bottom" aria-hidden="true" />
       <div className="intro-loader-content">
-        <h1 className="intro-loader-name">
-          KRAKNOT
-        </h1>
+      <div className="intro-name-mask">
+        <h1 className="intro-loader-name"> KRAKNOT </h1>
+      </div>
       </div>
     </div>
   );

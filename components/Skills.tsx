@@ -170,32 +170,11 @@ export default function Skills() {
         const rect =
           card.getBoundingClientRect();
 
-        const center =
-          rect.top +
-          rect.height / 2;
-
-        const distance =
-          Math.abs(
-            center - focusY
-          );
-
-        const strength =
-          Math.max(
-            0,
-            1 -
-              distance /
-                (
-                  window.innerHeight *
-                  0.6
-                )
-          );
-
-        const opacity =
-          0.62 +
-          strength * 0.38;
-
-        card.style.opacity =
-          opacity.toString();
+        const center = rect.top + rect.height / 2;
+        const distance = Math.abs( center - focusY  );
+        const strength = Math.max( 0, 1 - distance / ( window.innerHeight * 0.6 ) );
+        const opacity = 0.62 + strength * 0.38; 
+        card.style.opacity = opacity.toString();
       });
 
       /* Counter */
